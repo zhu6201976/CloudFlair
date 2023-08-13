@@ -130,12 +130,13 @@ $ docker run --rm --env-file=censys.env christophetd/cloudflair myvulnerable.sit
 Tested on Python 3.6. Feel free to [open an issue](https://github.com/christophetd/cloudflair/issues/new) if you have bug reports or questions.
 
 ## Tesla
-1.就是 https://search.censys.io/account/api 的api版 直接在网站使用更加直观和方便 这个的优势是帮你分析这个站点的漏洞 强大
-2.看使用说明 需要api_id 和 api_secret
-3.python cloudflair.py --censys-api-id c6ca8726-08e0-4a2e-b944-fbcb2248692e --censys-api-secret oyP1ilJFiZAOfP3U0qViMgZoblyU2sMD doods.pro
-  python cloudflair.py --censys-api-id c6ca8726-08e0-4a2e-b944-fbcb2248692e --censys-api-secret oyP1ilJFiZAOfP3U0qViMgZoblyU2sMD petsathome.com
-4.结果
-    (venv) D:\study\Python\Projects\CloudFlair>python cloudflair.py --censys-api-id c6ca8726-08e0-4a2e-b944-fbcb2248692e --censys-api-secret oyP1ilJFiZAOfP3U0qViMgZoblyU2sMD doods.pro
+- 1.就是 censys 的api版 直接在网站使用更加直观和方便 项目优势是帮你分析站点的漏洞
+- 2.看使用说明 需要api_id 和 api_secret https://search.censys.io/account/api
+- 3.python cloudflair.py --censys-api-id *** --censys-api-secret *** doods.pro
+    python cloudflair.py --censys-api-id *** --censys-api-secret *** petsathome.com
+- 4.运行结果
+  ```bash
+    python cloudflair.py --censys-api-id *** --censys-api-secret *** doods.pro
     [*] Retrieving Cloudflare IP ranges from https://www.cloudflare.com/ips-v4
     [*] The target appears to be behind CloudFlare.
     [*] Looking for certificates matching "doods.pro" using Censys
@@ -143,9 +144,10 @@ Tested on Python 3.6. Feel free to [open an issue](https://github.com/christophe
     [*] Looking for IPv4 hosts presenting these certificates...
     [*] 0 IPv4 hosts presenting a certificate issued to "doods.pro" were found.
     [-] The target is most likely not vulnerable.
-
-    (venv) D:\study\Python\Projects\CloudFlair>python cloudflair.py --censys-api-id c6ca8726-08e0-4a2e-b944-fbcb2248692e --censys-api-secret oyP1ilJFiZAOfP3U0qViMgZoblyU2sMD petsathome.com
-    
+  ```
+  
+  ```bash
+    python cloudflair.py --censys-api-id *** --censys-api-secret *** petsathome.com
     [*] Retrieving Cloudflare IP ranges from https://www.cloudflare.com/ips-v4
     [*] The target appears to be behind CloudFlare.
     [*] Looking for certificates matching "petsathome.com" using Censys
@@ -185,7 +187,7 @@ Tested on Python 3.6. Feel free to [open an issue](https://github.com/christophe
       - 88.211.26.58
       - 18.169.200.159
     
-    
     [*] Testing candidate origin servers
     [*] Retrieving target homepage at https://petsathome.com
     [-] https://petsathome.com responded with an unexpected HTTP status code 403
+  ```
