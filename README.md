@@ -128,3 +128,64 @@ $ docker run --rm --env-file=censys.env christophetd/cloudflair myvulnerable.sit
 ## Compatibility
 
 Tested on Python 3.6. Feel free to [open an issue](https://github.com/christophetd/cloudflair/issues/new) if you have bug reports or questions.
+
+## Tesla
+1.就是 https://search.censys.io/account/api 的api版 直接在网站使用更加直观和方便 这个的优势是帮你分析这个站点的漏洞 强大
+2.看使用说明 需要api_id 和 api_secret
+3.python cloudflair.py --censys-api-id c6ca8726-08e0-4a2e-b944-fbcb2248692e --censys-api-secret oyP1ilJFiZAOfP3U0qViMgZoblyU2sMD doods.pro
+  python cloudflair.py --censys-api-id c6ca8726-08e0-4a2e-b944-fbcb2248692e --censys-api-secret oyP1ilJFiZAOfP3U0qViMgZoblyU2sMD petsathome.com
+4.结果
+    (venv) D:\study\Python\Projects\CloudFlair>python cloudflair.py --censys-api-id c6ca8726-08e0-4a2e-b944-fbcb2248692e --censys-api-secret oyP1ilJFiZAOfP3U0qViMgZoblyU2sMD doods.pro
+    [*] Retrieving Cloudflare IP ranges from https://www.cloudflare.com/ips-v4
+    [*] The target appears to be behind CloudFlare.
+    [*] Looking for certificates matching "doods.pro" using Censys
+    [*] 4 certificates matching "doods.pro" found.
+    [*] Looking for IPv4 hosts presenting these certificates...
+    [*] 0 IPv4 hosts presenting a certificate issued to "doods.pro" were found.
+    [-] The target is most likely not vulnerable.
+
+    (venv) D:\study\Python\Projects\CloudFlair>python cloudflair.py --censys-api-id c6ca8726-08e0-4a2e-b944-fbcb2248692e --censys-api-secret oyP1ilJFiZAOfP3U0qViMgZoblyU2sMD petsathome.com
+    
+    [*] Retrieving Cloudflare IP ranges from https://www.cloudflare.com/ips-v4
+    [*] The target appears to be behind CloudFlare.
+    [*] Looking for certificates matching "petsathome.com" using Censys
+    [*] 200 certificates matching "petsathome.com" found.
+    [*] Splitting the list of certificates into chunks of 25.
+    [*] Looking for IPv4 hosts presenting these certificates...
+    [*] Processing chunk 1/8
+    [*] Processing chunk 2/8
+    [*] Processing chunk 3/8
+    [*] Processing chunk 4/8
+    [*] Processing chunk 5/8
+    [*] Processing chunk 6/8
+    [*] Processing chunk 7/8
+    [*] Processing chunk 8/8
+    [*] 23 IPv4 hosts presenting a certificate issued to "petsathome.com" were found.
+      - 88.211.26.43
+      - 20.67.205.205
+      - 20.93.96.24
+      - 20.67.208.166
+      - 88.211.24.33
+      - 88.211.26.56
+      - 40.85.136.254
+      - 3.9.235.32
+      - 88.211.26.44
+      - 161.71.58.10
+      - 161.71.60.8
+      - 20.223.18.22
+      - 12.130.131.224
+      - 161.71.56.125
+      - 88.211.26.57
+      - 13.41.5.244
+      - 34.149.132.51
+      - 20.67.205.72
+      - 88.211.24.34
+      - 20.82.156.88
+      - 88.211.26.45
+      - 88.211.26.58
+      - 18.169.200.159
+    
+    
+    [*] Testing candidate origin servers
+    [*] Retrieving target homepage at https://petsathome.com
+    [-] https://petsathome.com responded with an unexpected HTTP status code 403
